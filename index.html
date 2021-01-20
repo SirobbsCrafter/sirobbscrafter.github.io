@@ -4,12 +4,57 @@
     <meta charset="utf-8">
     <title>SirobbsCrafter: Абстракция</title>
     <style>
+    html, body {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: rgb(255, 235, 130);
+    }
     #title {
-      background: linear-gradient( #58FAF4, #0040FF );
+      display: block;
+      box-shadow: 0 0 30px 20px;
+      padding: 20px;
+      background: linear-gradient( 105deg, gold 0%, gold 30%, #ffffff77 31%,  #ffffff77 39%, gold 40%, gold 100% );
+
+      font-size: 120px;
+      color: white;
+      font-family: Roboto, Verdana, Arial, Helvetica, sans-serif;
+      font-style: italic;
+      text-transform: uppercase;
     }
     </style>
    </head>
    <body>
-    <h1 id="title">SirobbsCrafter<h1>
+    <h1 id="title">Sirobbs Crafter<h1>
+    <script>
+      function animateGradient(from, to, interval = false) {
+        let current = from;
+
+        timed();
+
+        function timed() {
+          gradientChange(++current);
+
+          if ( current >= to ) {
+            if ( interval <= 0 ) return;
+
+            current = from;
+            setTimeout(timed, interval);
+            return;
+          }
+
+          setTimeout(timed, 10);
+        }
+      }
+      function gradientChange(pos, width = 9, blur = 1) {
+        let bg = 'gold';
+        let line = '#ffffff77';
+        title.style.background = `linear-gradient( 105deg, ${bg} 0%, ${bg} ${pos}%, ${line} ${pos+blur}%,  ${line} ${pos+blur+width}%, ${bg} ${pos+blur+width+blur}%, ${bg} 100% )`;
+      }
+
+      animateGradient(-10, 110, 7000);
+    </script>
    </body>
 </html>
